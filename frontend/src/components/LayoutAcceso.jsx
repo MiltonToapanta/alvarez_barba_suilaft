@@ -3,16 +3,18 @@ import Marca from './Marca.jsx';
 
 export default function LayoutAcceso({ titulo, children }) {
   useEffect(() => {
-    document.title = `SUIAUTO | ${titulo}`;
+    document.title = `Alvarez Barba | ${titulo}`;
   }, [titulo]);
 
   return (
     <div className="au-layout">
       <Marca />
       <main className="au-acceso">
-        <div className="au-card">{children}</div>
+        <div className="au-card">
+          {children}
+        </div>
         <p className="au-copy">
-          © {new Date().getFullYear()} SUIAUTO · SUILAFT · Alvarez Barba S.A. Todos los derechos reservados.
+          © {new Date().getFullYear()} Alvarez Barba S.A. · Plataforma SUIAUTO · SUILAFT. Todos los derechos reservados.
         </p>
       </main>
     </div>

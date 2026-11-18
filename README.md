@@ -29,6 +29,8 @@ MariaDB queda expuesta solo en `127.0.0.1:3317` (para DBeaver/TablePlus).
 | `backend/app/Http/Controllers/Auth/AccesoController.php` | Login en dos pasos (contraseña + TOTP) |
 | `backend/app/Services/SegundoFactor.php` | TOTP, bloqueo por intentos, códigos de recuperación |
 | `frontend/src/` | Pantallas de acceso (mismo diseño y CSS que SUIAUTO) |
+| `branding/` | Logo de Alvarez Barba en SVG y PNG (versión oscura y clara) |
+| `frontend/src/assets/alvarez-barba.css` | Identidad visual: grafito + dorado, títulos serif (Cormorant Garamond) |
 | `tools/extraer_schema.py` | Regenera schema + catálogos desde un volcado de SUIAUTO |
 | `tools/prueba_login.py` | Prueba de punta a punta de los invariantes de seguridad del login |
 

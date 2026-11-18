@@ -4,8 +4,7 @@ import { api } from '../api.js';
 import { useAuth } from '../App.jsx';
 import { modulosVisibles } from '../modulos.js';
 import Icono from './Icono.jsx';
-import escudo from '../assets/escudo-color.png';
-import logoCliente from '../assets/logo-alvarez-barba.png';
+import LogoAB from './LogoAB.jsx';
 
 function ahora() {
   const d = new Date();
@@ -56,13 +55,9 @@ export default function AppLayout() {
             <Icono nombre="menu" />
           </button>
 
-          <Link to="/" className="brand">
-            <img src={escudo} alt="" />
-            <div>
-              <strong>SUIAUTO</strong>
-              <span>Portal corporativo</span>
-            </div>
-            <img src={logoCliente} alt="Alvarez Barba S.A." className="brand-cliente" />
+          <Link to="/" className="brand" aria-label="Inicio · Alvarez Barba S.A.">
+            <LogoAB tono="oscuro" forma="horizontal" />
+            <span className="brand-sistema">Portal de cumplimiento<b>SUIAUTO · SUILAFT</b></span>
           </Link>
 
           <div className="topbar-right">

@@ -33,8 +33,9 @@ export default function Login() {
   return (
     <LayoutAcceso titulo="Acceso">
       <header className="au-header">
+        <span className="au-eyebrow">Portal de cumplimiento</span>
         <h1>Bienvenido/a</h1>
-        <p className="au-subtitle">Inicia sesión con tu cuenta.</p>
+        <p className="au-subtitle">Inicia sesión con tu cuenta corporativa.</p>
       </header>
 
       <Alerta>{error}</Alerta>

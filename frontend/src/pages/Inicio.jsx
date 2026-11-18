@@ -10,7 +10,7 @@ export default function Inicio() {
 
   return (
     <section className="hero">
-      <span className="badge"><Icono nombre="bank" /> PANEL CORPORATIVO SUIAUTO</span>
+      <span className="badge"><Icono nombre="bank" /> PANEL CORPORATIVO ALVAREZ BARBA</span>
       <h1>Hola, <span className="accent">{usuario?.nombres || usuario?.usuario}</span></h1>
       <p>Elige una opción para continuar con la gestión de cumplimiento vehicular</p>
 

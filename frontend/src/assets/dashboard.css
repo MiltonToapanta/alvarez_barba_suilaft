@@ -1,14 +1,15 @@
 /* Portal (dashboard) — replicado de SUIAUTO public/css/dashboard.css.
    Acotado a .app-shell para no chocar con los estilos del login. */
 .app-shell {
-    --navy: #0f2544;
-    --navy-dark: #0a1a33;
-    --blue: #2563eb;
-    --blue-light: #60a5fa;
-    --bg: #eef1f6;
+    /* paleta Alvarez Barba: grafito + dorado champagne + marfil */
+    --navy: #212123;
+    --navy-dark: #161617;
+    --blue: #8a6a33;
+    --blue-light: #d9bf8a;
+    --bg: #f1eee8;
     --card-bg: #ffffff;
-    --text: #1f2937;
-    --muted: #6b7280;
+    --text: #1c1b19;
+    --muted: #6b665d;
 
     display: flex;
     min-height: 100vh;
@@ -42,11 +43,11 @@
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    color: #9db1d1;
+    color: #a49d90;
     transition: background 0.15s ease, color 0.15s ease;
 }
 .side-item:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
-.side-item.active { background: var(--blue); color: #fff; }
+.side-item.active { background: linear-gradient(160deg, #c9a96e, #8a6a33); color: #fff; }
 
 .sidebar-velo { display: none; }
 
@@ -55,7 +56,7 @@
 
 .topbar {
     background: #fff;
-    border-bottom: 1px solid #e5e9f0;
+    border-bottom: 1px solid #e6e0d4;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -66,10 +67,16 @@
 .icon-btn { display: none; background: none; border: none; cursor: pointer; color: var(--navy); }
 
 .brand { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
-.brand img { width: 36px; height: 36px; object-fit: contain; }
-.brand strong { display: block; font-size: 1rem; color: var(--navy); letter-spacing: 0.02em; }
-.brand span { font-size: 0.75rem; color: var(--muted); }
-.brand .brand-cliente { height: 30px; width: auto; margin-left: 0.5rem; padding-left: 0.75rem; border-left: 1px solid #e5e9f0; }
+.brand-sistema {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-left: 0.4rem;
+    padding-left: 0.9rem;
+    border-left: 1px solid #e6e0d4;
+}
+.brand-sistema b { font-size: 0.66rem; letter-spacing: 0.14em; color: var(--navy); margin-top: 0.1rem; }
 
 .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
 
@@ -77,7 +84,7 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    background: #f2f4f8;
+    background: #f3f0ea;
     border-radius: 999px;
     padding: 0.4rem 0.85rem;
     font-size: 0.8rem;
@@ -86,7 +93,7 @@
     font-variant-numeric: tabular-nums;
 }
 .pill svg { width: 15px; height: 15px; }
-.pill.role { background: #eaf1ff; color: var(--blue); font-weight: 600; }
+.pill.role { background: #f5ecdb; color: var(--blue); font-weight: 600; }
 
 .btn-logout {
     display: flex;
@@ -104,14 +111,14 @@
     transition: background 0.15s ease;
 }
 .btn-logout svg { width: 15px; height: 15px; }
-.btn-logout:hover { background: #1d4ed8; }
+.btn-logout:hover { background: #3a3732; }
 
 /* Content */
 .content { padding: 1.75rem; }
 
 .hero {
-    background: linear-gradient(180deg, #f7f9fc, #eef1f6);
-    border: 1px solid #e5e9f0;
+    background: linear-gradient(180deg, #faf8f4, #f1eee8);
+    border: 1px solid #e6e0d4;
     border-radius: 24px;
     padding: 2rem;
 }
@@ -121,7 +128,7 @@
     align-items: center;
     gap: 0.5rem;
     background: #fff;
-    border: 1px solid #dbe4f3;
+    border: 1px solid #e3d8c2;
     color: var(--navy);
     font-size: 0.7rem;
     font-weight: 700;
@@ -131,7 +138,7 @@
 }
 .badge svg { width: 16px; height: 16px; }
 
-.hero h1 { font-size: 2.1rem; margin: 1rem 0 0.35rem; color: var(--navy); }
+.hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 2.6rem; margin: 1rem 0 0.35rem; color: var(--navy); }
 .hero h1 .accent { color: var(--blue); }
 .hero > p { color: var(--muted); margin-bottom: 1.75rem; }
 
@@ -140,7 +147,7 @@
 .module-card {
     position: relative;
     background: var(--card-bg);
-    border: 1px solid #e5e9f0;
+    border: 1px solid #e6e0d4;
     border-radius: 18px;
     padding: 1.5rem 1.4rem 1.75rem;
     text-decoration: none;
@@ -151,7 +158,7 @@
     gap: 0.5rem;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.module-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(15, 37, 68, 0.1); }
+.module-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(33, 33, 35, 0.12); }
 
 .module-icon {
     width: 46px;
@@ -164,6 +171,7 @@
     justify-content: center;
     margin-bottom: 0.25rem;
 }
+.module-icon svg { color: #e6d3a8; }
 .module-card strong { font-size: 1.02rem; color: var(--navy); }
 .module-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
 
@@ -209,7 +217,7 @@
     .sidebar.open { left: 0; }
     .sidebar.open + .sidebar-velo { display: block; position: fixed; inset: 0; z-index: 19; background: rgba(10, 26, 51, 0.35); }
     .icon-btn { display: flex; }
-    .brand .brand-cliente { display: none; }
+    .brand-sistema { display: none; }
 }
 
 @media (max-width: 520px) {
