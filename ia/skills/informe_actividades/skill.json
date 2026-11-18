@@ -1,0 +1,105 @@
+{
+    "slug": "informe_actividades",
+    "name": "Informe de cumplimiento",
+    "category": "documento",
+    "icon": "doc",
+    "description": "Arma el informe de actividades del oficial de cumplimiento con metas, hallazgos, sanciones y conclusiones.",
+    "starter": "Quiero generar un informe de cumplimiento. Pregúntame los datos de la entidad, el periodo y las actividades realizadas.",
+    "export_type": "informe",
+    "order": 30,
+    "show_in_picker": true,
+    "triggers": [
+        "informe de cumplimiento",
+        "informe de actividades",
+        "informe del oficial",
+        "informe anual del oficial",
+        "informe mensual del oficial",
+        "generar un informe",
+        "elaborar el informe"
+    ],
+    "resources": [
+        "instructions.md"
+    ],
+    "guided_questions": [
+        {
+            "id": "para",
+            "label": "Para (destinatario, nombre y cargo)",
+            "hint": "Ej. Jeanette Calvachi (Directora), UAFE"
+        },
+        {
+            "id": "periodo",
+            "label": "Período del informe",
+            "hint": "Ej. enero a diciembre 2023"
+        },
+        {
+            "id": "fecha",
+            "label": "Fecha del informe",
+            "hint": "Ej. 29 de enero de 2024"
+        },
+        {
+            "id": "elabora",
+            "label": "Quién elabora (nombre y cargo)",
+            "hint": "Deja vacio para usar el usuario logueado"
+        },
+        {
+            "id": "razon_social",
+            "label": "Razón social",
+            "hint": ""
+        },
+        {
+            "id": "ruc",
+            "label": "RUC",
+            "hint": ""
+        },
+        {
+            "id": "inicio",
+            "label": "Fecha de inicio de actividades",
+            "hint": ""
+        },
+        {
+            "id": "activacion",
+            "label": "Fecha de activación como sujeto obligado",
+            "hint": ""
+        },
+        {
+            "id": "actividad",
+            "label": "Actividad económica por la que reporta",
+            "hint": ""
+        },
+        {
+            "id": "direccion",
+            "label": "Dirección",
+            "hint": ""
+        },
+        {
+            "id": "actividades",
+            "label": "Actividades realizadas",
+            "hint": "Una por linea: nombre | % esperado | % alcanzado | descripción",
+            "multiline": true
+        },
+        {
+            "id": "resu",
+            "label": "Reportes RESU / NO RESU",
+            "hint": "N, fecha, donante, comprobante, valor (opcional)",
+            "multiline": true
+        },
+        {
+            "id": "hallazgos",
+            "label": "Hallazgos y señales de alerta",
+            "hint": "Opcional",
+            "multiline": true
+        },
+        {
+            "id": "sanciones",
+            "label": "Sanciones aplicadas",
+            "hint": "Opcional",
+            "multiline": true
+        },
+        {
+            "id": "conclusiones",
+            "label": "Conclusiones",
+            "hint": "Opcional; la IA puede redactarlas",
+            "multiline": true
+        }
+    ]
+}

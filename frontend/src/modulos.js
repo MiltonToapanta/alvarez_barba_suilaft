@@ -11,7 +11,7 @@ export const MODULOS = [
   { icon: 'bank', titulo: 'Matriz Institucional', desc: 'Factores, ponderación, umbrales y políticas', ruta: 'institucional' },
   { icon: 'bell', titulo: 'Motor de Alertas', desc: 'Riesgo, transacciones, coincidencias en listas y vencimientos', ruta: 'alertas' },
   { icon: 'folder', titulo: 'Gestión de Casos', desc: 'Investigaciones, seguimiento y cierre formal de contrapartes de mayor riesgo', ruta: 'casos' },
-  { icon: 'brain', titulo: 'Inteligencia Artificial', desc: 'Centro de Inteligencia SUIAUTO: asistente, recomendaciones y control asistido', ruta: 'ia' },
+  { icon: 'brain', titulo: 'Inteligencia Artificial', desc: 'SUILAFT AI: asistente de cumplimiento, proyectos, normativa y documentos', ruta: 'ia' },
   { icon: 'report', titulo: 'Reportería', desc: 'RESU, ROS, RIA · historial y exportación', ruta: 'reporteria' },
   { icon: 'audit', titulo: 'Auditoría', desc: 'Trazabilidad y registros', ruta: 'auditoria' },
 ];

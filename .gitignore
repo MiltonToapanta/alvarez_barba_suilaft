@@ -2,3 +2,6 @@
 backend/.env
 frontend/node_modules
 backend/vendor
+
+# Paquetes externos (traen .env con claves)
+*.zip

@@ -7,6 +7,7 @@ import Codigo from './pages/Codigo.jsx';
 import Recuperacion from './pages/Recuperacion.jsx';
 import Inicio from './pages/Inicio.jsx';
 import EnConstruccion from './pages/EnConstruccion.jsx';
+import ModuloIA from './pages/ModuloIA.jsx';
 import AppLayout from './components/AppLayout.jsx';
 import { modulosVisibles } from './modulos.js';
 
@@ -61,7 +62,7 @@ export default function App() {
         <Route path="/" element={solo('autenticado', <AppLayout />)}>
           <Route index element={<Inicio />} />
           {modulosVisibles(usuario).map((m) => (
-            <Route key={m.ruta} path={m.ruta} element={<EnConstruccion modulo={m} />} />
+            <Route key={m.ruta} path={m.ruta} element={m.ruta === 'ia' ? <ModuloIA /> : <EnConstruccion modulo={m} />} />
           ))}
         </Route>
         <Route path="*" element={<Navigate to={RUTA_POR_ESTADO[estado]} replace />} />

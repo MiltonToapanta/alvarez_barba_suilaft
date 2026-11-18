@@ -1,0 +1,3 @@
+OBSOLETO: estos archivos ya no se leen.
+Los flujos de documentos ahora viven en /skills/<slug>/ (skill.json + instructions.md).
+Edita alli las instrucciones de cada habilidad.

@@ -1,0 +1,53 @@
+{
+    "slug": "plan_anual",
+    "name": "Plan de trabajo anual",
+    "category": "documento",
+    "icon": "calendar",
+    "description": "Planifica las actividades anuales de cumplimiento con responsables, frecuencias, fechas e indicadores.",
+    "starter": "Quiero generar el plan de trabajo anual de cumplimiento. Pregúntame las actividades, responsables y fechas.",
+    "export_type": "plan",
+    "order": 50,
+    "show_in_picker": false,
+    "triggers": [
+        "plan anual",
+        "plan de trabajo anual",
+        "cronograma anual de cumplimiento"
+    ],
+    "resources": [
+        "instructions.md"
+    ],
+    "guided_questions": [
+        {
+            "id": "periodo",
+            "label": "Período (año)",
+            "hint": "Ej. 2026"
+        },
+        {
+            "id": "razon_social",
+            "label": "Razón social",
+            "hint": ""
+        },
+        {
+            "id": "ruc",
+            "label": "RUC",
+            "hint": ""
+        },
+        {
+            "id": "oc",
+            "label": "Oficial de cumplimiento",
+            "hint": ""
+        },
+        {
+            "id": "actividades",
+            "label": "Actividades planificadas",
+            "hint": "Una por linea: nombre | responsable | frecuencia | fechas | indicador",
+            "multiline": true
+        },
+        {
+            "id": "metas",
+            "label": "Objetivos, metas e indicadores",
+            "hint": "Opcional",
+            "multiline": true
+        }
+    ]
+}

@@ -1,0 +1,73 @@
+{
+    "slug": "debida_diligencia",
+    "name": "Debida diligencia",
+    "category": "analisis",
+    "icon": "shield",
+    "description": "Define el nivel de debida diligencia (simplificada, estándar o reforzada) para un cliente, proveedor o PEP y lista la evidencia a pedir.",
+    "starter": "Necesito definir la debida diligencia de una contraparte. Pregúntame el tipo de contraparte, su actividad y los factores de riesgo.",
+    "export_type": "",
+    "order": 70,
+    "show_in_picker": true,
+    "triggers": [
+        "debida diligencia",
+        "kyc de",
+        "kyb de",
+        "conozca a su cliente de",
+        "beneficiario final de",
+        "es pep",
+        "persona expuesta politicamente",
+        "diligencia reforzada",
+        "vinculacion de un cliente",
+        "vincular a un cliente",
+        "vincular un proveedor"
+    ],
+    "resources": [
+        "instructions.md"
+    ],
+    "guided_questions": [
+        {
+            "id": "contraparte",
+            "label": "Tipo de contraparte",
+            "options": [
+                "Cliente persona natural",
+                "Cliente persona jurídica",
+                "Proveedor",
+                "Empleado",
+                "Socio / accionista"
+            ]
+        },
+        {
+            "id": "actividad",
+            "label": "Actividad económica y relación comercial",
+            "hint": "",
+            "multiline": true
+        },
+        {
+            "id": "pep",
+            "label": "¿Es PEP o está relacionado con un PEP?",
+            "options": [
+                "No",
+                "Sí, es PEP",
+                "Relacionado con PEP",
+                "No se sabe"
+            ]
+        },
+        {
+            "id": "jurisdicciones",
+            "label": "Países o jurisdicciones involucradas",
+            "hint": "Opcional"
+        },
+        {
+            "id": "estructura",
+            "label": "Estructura societaria y beneficiario final",
+            "hint": "Solo personas jurídicas",
+            "multiline": true
+        },
+        {
+            "id": "operaciones",
+            "label": "Productos, montos y forma de pago esperados",
+            "hint": "",
+            "multiline": true
+        }
+    ]
+}

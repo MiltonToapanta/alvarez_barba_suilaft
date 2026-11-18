@@ -1,0 +1,75 @@
+{
+    "slug": "matriz_riesgo",
+    "name": "Matriz de riesgo",
+    "category": "documento",
+    "icon": "grid",
+    "description": "Evalúa a un empleado, cliente, proveedor o accionista criterio por criterio y calcula el riesgo total con PDF oficial.",
+    "starter": "Quiero generar una matriz de riesgo. Pregúntame primero el tipo de sujeto (empleado, cliente, proveedor, accionista) y luego los datos.",
+    "export_type": "matriz",
+    "order": 20,
+    "show_in_picker": true,
+    "triggers": [
+        "matriz de riesgo",
+        "matriz de riesgos",
+        "evaluar el riesgo de",
+        "calificar el riesgo",
+        "scoring de riesgo",
+        "generar una matriz",
+        "elaborar una matriz"
+    ],
+    "resources": [
+        "instructions.md",
+        "references/matriz_empleado.md",
+        "references/matriz_cliente_pn.md"
+    ],
+    "guided_questions": [
+        {
+            "id": "sujeto",
+            "label": "Sujeto de la matriz",
+            "options": [
+                "Empleado",
+                "Cliente persona natural",
+                "Cliente persona juridica",
+                "Proveedor",
+                "Accionista / socio"
+            ]
+        },
+        {
+            "id": "codigo",
+            "label": "Código del documento",
+            "hint": "Ej. CVIAL-UAFE-F-0011"
+        },
+        {
+            "id": "nombre",
+            "label": "Nombre / razón social del sujeto",
+            "hint": ""
+        },
+        {
+            "id": "identificacion",
+            "label": "Identificación (cedula / RUC)",
+            "hint": ""
+        },
+        {
+            "id": "cargo",
+            "label": "Cargo o relación con la empresa",
+            "hint": ""
+        },
+        {
+            "id": "empresa",
+            "label": "Empresa",
+            "hint": ""
+        },
+        {
+            "id": "financieros",
+            "label": "Datos financieros",
+            "hint": "Activos, pasivos, ingresos, gastos (una por linea, opcional)",
+            "multiline": true
+        },
+        {
+            "id": "extra",
+            "label": "Otros datos para evaluar criterios",
+            "hint": "PEP, jurisdicción, productos, etc. (opcional)",
+            "multiline": true
+        }
+    ]
+}

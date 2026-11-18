@@ -1,0 +1,61 @@
+{
+    "slug": "analisis_operacion_inusual",
+    "name": "Operación inusual",
+    "category": "analisis",
+    "icon": "alert",
+    "description": "Analiza una operación frente al perfil del cliente y la clasifica con estructura técnica, sin concluir por el oficial.",
+    "starter": "Quiero analizar una operación inusual. Pregúntame los datos del cliente, su perfil esperado y la operación detectada.",
+    "export_type": "",
+    "order": 60,
+    "show_in_picker": true,
+    "triggers": [
+        "operacion inusual",
+        "operación inusual",
+        "operacion sospechosa",
+        "operación sospechosa",
+        "transaccion inusual",
+        "senal de alerta en una operacion",
+        "analizar una operacion",
+        "analizar esta operacion",
+        "posible ros"
+    ],
+    "resources": [
+        "instructions.md"
+    ],
+    "guided_questions": [
+        {
+            "id": "cliente",
+            "label": "Cliente (tipo y referencia anonimizada)",
+            "hint": "Ej. PJ comercializadora, cliente C-0142"
+        },
+        {
+            "id": "actividad",
+            "label": "Actividad económica declarada",
+            "hint": ""
+        },
+        {
+            "id": "perfil",
+            "label": "Perfil transaccional esperado",
+            "hint": "Montos, frecuencia, canales habituales",
+            "multiline": true
+        },
+        {
+            "id": "operacion",
+            "label": "Operación detectada",
+            "hint": "Fecha, monto, forma de pago, contraparte, país",
+            "multiline": true
+        },
+        {
+            "id": "documentos",
+            "label": "Documentos y explicación del cliente",
+            "hint": "Opcional",
+            "multiline": true
+        },
+        {
+            "id": "alertas",
+            "label": "Señales de alerta observadas",
+            "hint": "Opcional",
+            "multiline": true
+        }
+    ]
+}

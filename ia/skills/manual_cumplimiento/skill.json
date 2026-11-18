@@ -1,0 +1,140 @@
+{
+    "slug": "manual_cumplimiento",
+    "name": "Manual de cumplimiento",
+    "category": "documento",
+    "icon": "book",
+    "description": "Redacta el manual de prevención PLA/FT/FPADM condensado, listo para aprobar y exportar a Word o PDF.",
+    "starter": "Quiero generar el manual de cumplimiento PLA/FT/FPADM. Pregúntame los datos de la empresa y la estructura requerida.",
+    "export_type": "manual",
+    "order": 10,
+    "show_in_picker": true,
+    "triggers": [
+        "manual de cumplimiento",
+        "manual de prevencion",
+        "manual pla",
+        "manual de lavado",
+        "manual uafe",
+        "generar el manual",
+        "redactar el manual",
+        "elaborar el manual"
+    ],
+    "resources": [
+        "instructions.md"
+    ],
+    "guided_questions": [
+        {
+            "id": "empresa",
+            "label": "Nombre de la empresa (razón social)",
+            "hint": "Ej. M&B DRILLING-PR S.A."
+        },
+        {
+            "id": "ruc",
+            "label": "RUC",
+            "hint": "13 digitos"
+        },
+        {
+            "id": "codigo",
+            "label": "Código del manual",
+            "hint": "Opcional. Ej. MB-PLA-001"
+        },
+        {
+            "id": "version",
+            "label": "Versión",
+            "hint": "Por defecto 1.0"
+        },
+        {
+            "id": "fecha",
+            "label": "Fecha de emisión (mes y año)",
+            "hint": "Ej. agosto 2026"
+        },
+        {
+            "id": "ciudad",
+            "label": "Ciudad y país",
+            "hint": "Por defecto Quito - Ecuador"
+        },
+        {
+            "id": "tipo_societario",
+            "label": "Tipo societario",
+            "hint": "S.A., Cia. Ltda., etc."
+        },
+        {
+            "id": "constitucion",
+            "label": "Fecha de constitución",
+            "hint": ""
+        },
+        {
+            "id": "domicilio",
+            "label": "Domicilio y dirección",
+            "hint": ""
+        },
+        {
+            "id": "representante",
+            "label": "Representante legal (nombre y cargo)",
+            "hint": ""
+        },
+        {
+            "id": "giro",
+            "label": "Giro del negocio (descripción breve)",
+            "hint": "",
+            "multiline": true
+        },
+        {
+            "id": "ciiu",
+            "label": "Actividades económicas principales (CIIU)",
+            "hint": "Si las conoce"
+        },
+        {
+            "id": "empleados",
+            "label": "Número de empleados (aproximado)",
+            "hint": ""
+        },
+        {
+            "id": "productos",
+            "label": "Productos o servicios y canales",
+            "hint": "",
+            "multiline": true
+        },
+        {
+            "id": "aprueba",
+            "label": "Quién aprueba el manual",
+            "hint": "Junta General / Gerencia + n.º de acta"
+        },
+        {
+            "id": "revisado",
+            "label": "Revisado por (nombre y cargo)",
+            "hint": "Ej. Gerente General"
+        },
+        {
+            "id": "oc_principal",
+            "label": "Oficial de Cumplimiento principal (nombre y código UAFE)",
+            "hint": ""
+        },
+        {
+            "id": "oc_suplente",
+            "label": "Oficial de Cumplimiento suplente (opcional)",
+            "hint": ""
+        },
+        {
+            "id": "comite",
+            "label": "Comité de Cumplimiento (opcional)",
+            "hint": "Quienes lo integran"
+        },
+        {
+            "id": "metodologia",
+            "label": "Metodología de riesgo",
+            "hint": "Deja vacio para usar la escala 1-5 (propuesta)"
+        },
+        {
+            "id": "politicas",
+            "label": "Políticas ya definidas (KYC, PEP, reportes, conservación, capacitación)",
+            "hint": "Opcional. Si queda vacio, la IA las propondrá",
+            "multiline": true
+        },
+        {
+            "id": "extra",
+            "label": "Observaciones o datos adicionales",
+            "hint": "Opcional",
+            "multiline": true
+        }
+    ]
+}

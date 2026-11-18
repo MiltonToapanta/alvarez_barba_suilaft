@@ -68,7 +68,7 @@ export default function AppLayout() {
           </div>
         </header>
 
-        <main className="content">
+        <main className={pathname === '/ia' ? 'content content--marco' : 'content'}>
           <Outlet />
         </main>
       </div>

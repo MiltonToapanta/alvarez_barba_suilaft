@@ -1,0 +1,104 @@
+{
+    "slug": "metodologia",
+    "name": "Metodología",
+    "category": "documento",
+    "icon": "route",
+    "description": "Diagnostica el negocio y propone la hoja de ruta por fases para implementar el sistema de prevención.",
+    "starter": "Quiero una metodología de implementación de cumplimiento PLA/FT/FPADM. Pregúntame sobre el negocio y dame una hoja de ruta por fases.",
+    "export_type": "metodologia",
+    "order": 40,
+    "show_in_picker": true,
+    "triggers": [
+        "metodologia de implementacion",
+        "plan de implementacion",
+        "hoja de ruta",
+        "implementar el sistema de prevencion",
+        "implementar el sistema pla"
+    ],
+    "resources": [
+        "instructions.md"
+    ],
+    "guided_questions": [
+        {
+            "id": "sector",
+            "label": "Qué hace el negocio (actividad económica)",
+            "hint": "Ej. servicios petroleros, comercio, construcción"
+        },
+        {
+            "id": "empleados",
+            "label": "Número de empleados (aproximado)",
+            "hint": ""
+        },
+        {
+            "id": "facturacion",
+            "label": "Facturación o volumen aproximado",
+            "hint": "Opcional"
+        },
+        {
+            "id": "sujeto_obligado",
+            "label": "¿Ya es sujeto obligado UAFE?",
+            "options": [
+                "Sí",
+                "No",
+                "No lo se"
+            ]
+        },
+        {
+            "id": "registro_uafe",
+            "label": "¿Tiene código de registro UAFE?",
+            "hint": "Deja vacio si no"
+        },
+        {
+            "id": "oc",
+            "label": "¿Tiene Oficial de Cumplimiento?",
+            "options": [
+                "Sí",
+                "No",
+                "En proceso"
+            ]
+        },
+        {
+            "id": "manual",
+            "label": "¿Tiene manual de prevención actual?",
+            "options": [
+                "Sí",
+                "No",
+                "Desactualizado"
+            ]
+        },
+        {
+            "id": "productos",
+            "label": "Productos o servicios y canales",
+            "hint": "",
+            "multiline": true
+        },
+        {
+            "id": "clientes",
+            "label": "Tipos de clientes y jurisdicciones",
+            "hint": "Ej. PN locales, PJ, exportación, proveedores",
+            "multiline": true
+        },
+        {
+            "id": "operaciones",
+            "label": "Características de las operaciones",
+            "hint": "Efectivo, transferencias, montos, países",
+            "multiline": true
+        },
+        {
+            "id": "recursos",
+            "label": "Recursos disponibles (personal, presupuesto)",
+            "hint": "Opcional"
+        },
+        {
+            "id": "plazo",
+            "label": "Plazo deseado para implementar",
+            "hint": "Ej. 6 meses, 1 año"
+        },
+        {
+            "id": "extra",
+            "label": "Observaciones adicionales",
+            "hint": "Opcional",
+            "multiline": true
+        }
+    ]
+}

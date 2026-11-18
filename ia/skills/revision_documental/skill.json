@@ -1,0 +1,27 @@
+{
+    "slug": "revision_documental",
+    "name": "Revisión documental",
+    "category": "analisis",
+    "icon": "search",
+    "description": "Audita un manual, política, matriz o formulario cargado y entrega hallazgos priorizados con recomendación y plazo.",
+    "starter": "Quiero revisar un documento existente de cumplimiento. Adjunto el archivo; dime qué hallazgos encuentras y su prioridad.",
+    "export_type": "",
+    "order": 80,
+    "show_in_picker": true,
+    "triggers": [
+        "revisa este documento",
+        "revisar el documento",
+        "revisar mi manual",
+        "revisa mi manual",
+        "auditar el manual",
+        "auditar la politica",
+        "revisar la matriz",
+        "que le falta a",
+        "hallazgos del documento",
+        "revision documental"
+    ],
+    "resources": [
+        "instructions.md"
+    ],
+    "guided_questions": []
+}

@@ -1,0 +1,43 @@
+/*
+ * SUILAFT AI dentro del portal Alvarez Barba S.A.
+ * Re-tematiza el sistema de diseño original (app.css) con la paleta del portal:
+ * grafito + dorado champagne + marfil. Se carga después de app.css.
+ */
+:root {
+  --bg: #faf8f4;
+  --bg-sidebar: #f1ede5;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #efe8da;      /* burbuja del usuario */
+  --bg-inset: #f5f1ea;
+  --fill: rgba(33, 33, 35, 0.05);
+  --fill-strong: rgba(33, 33, 35, 0.09);
+  --glass: rgba(250, 248, 244, 0.9);
+  --scrim: rgba(22, 22, 23, 0.4);
+
+  --label: #1c1b19;
+  --label-2: #5b564d;
+  --label-3: #a39c8e;
+  --separator: rgba(33, 33, 35, 0.1);
+  --separator-strong: rgba(33, 33, 35, 0.17);
+
+  --primary: #212123;
+  --on-primary: #ffffff;
+  --primary-hover: #3a3732;
+  --accent: #8a6a33;          /* enlaces y citas (dorado oscuro, 5:1) */
+  --accent-fill: #212123;     /* botón enviar grafito */
+  --accent-fill-hover: #8a6a33;
+  --accent-soft: rgba(201, 169, 110, 0.16);
+
+  --focus: 0 0 0 3px rgba(176, 140, 79, 0.3);
+  --shadow-md: 0 4px 20px rgba(33, 33, 35, 0.08), 0 0 0 0.5px rgba(33, 33, 35, 0.12);
+  --shadow-lg: 0 24px 64px rgba(33, 33, 35, 0.2), 0 0 0 0.5px rgba(33, 33, 35, 0.12);
+
+  --font-display: "Cormorant Garamond", "Source Serif 4", Georgia, serif;
+}
+
+/* Sello de la marca: grafito con filo dorado en vez de azul noche */
+.brand-mark {
+  background: linear-gradient(150deg, #161617 0%, #2a2a2c 100%);
+  box-shadow: inset 0 0 0 1px rgba(201, 169, 110, 0.45), 0 2px 8px rgba(22, 22, 23, 0.25);
+}
+.brand-mark-greet { box-shadow: inset 0 0 0 1px rgba(201, 169, 110, 0.5), 0 6px 20px rgba(201, 169, 110, 0.22); }
