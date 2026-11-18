@@ -278,6 +278,7 @@
         if (willOpen) {
           if (menuSel === '#skillMenu') renderSkillMenu();
           menu.hidden = false;
+          fitMenu(menu);
           button.setAttribute('aria-expanded', 'true');
           const first = menu.querySelector('.menu-item');
           if (first && event.detail === 0) first.focus();
@@ -288,6 +289,28 @@
     });
 
     document.addEventListener('click', closeMenus);
+  }
+
+  // Los menús que abren hacia arriba se ajustan al espacio visible: si arriba no caben,
+  // abren hacia abajo; en ambos casos con alto máximo y desplazamiento interno.
+  function fitMenu(menu) {
+    if (!menu.classList.contains('menu-up') && !menu.classList.contains('menu-flip')) return;
+    menu.classList.remove('menu-flip');
+    menu.classList.add('menu-up');
+    menu.style.maxHeight = '';
+    const anchor = (menu.parentElement || menu).getBoundingClientRect();
+    const margin = 12;
+    const above = anchor.top - margin - 8;
+    const below = window.innerHeight - anchor.bottom - margin - 8;
+    const natural = menu.scrollHeight;
+    if (natural > above && below > above) {
+      menu.classList.remove('menu-up');
+      menu.classList.add('menu-flip');
+      menu.style.maxHeight = Math.max(120, below) + 'px';
+    } else {
+      menu.style.maxHeight = Math.max(120, above) + 'px';
+    }
+    menu.style.overflowY = 'auto';
   }
 
   function menuKeys(event, menu) {
