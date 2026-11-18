@@ -209,6 +209,128 @@
     .ab-filete, .ab-marca h2, .ab-plataforma { display: none; }
     .ab-logo--vertical .ab-logo-nombre { font-size: 2rem; }
 }
+/* =================== Animaciones =================== */
+@keyframes ab-subir { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes ab-aparecer { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ab-enfocar {
+    from { opacity: 0; letter-spacing: 0.14em; filter: blur(6px); }
+    to { opacity: 1; letter-spacing: 0.01em; filter: blur(0); }
+}
+@keyframes ab-trazo { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ab-girar-entrar { from { opacity: 0; transform: rotate(-135deg) scale(0); } to { opacity: 1; transform: rotate(45deg) scale(1); } }
+@keyframes ab-brillo-texto { 0%, 70% { background-position: 120% 0; } 100% { background-position: -20% 0; } }
+@keyframes ab-respirar { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.12); } }
+@keyframes ab-flotar-polvo {
+    0% { transform: translate(0, 0); opacity: 0; }
+    12% { opacity: var(--o, 0.5); }
+    85% { opacity: var(--o, 0.5); }
+    100% { transform: translate(var(--dx, 20px), -110vh); opacity: 0; }
+}
+@keyframes ab-oro-correr { from { background-position: 0% 0; } to { background-position: 200% 0; } }
+@keyframes ab-barrido { from { left: -60%; } to { left: 130%; } }
+
+/* Panel de marca: entrada escalonada */
+.ab-marca .ab-logo { animation: ab-aparecer 0.6s ease both; }
+.ab-marca .ab-logo::before {
+    content: '';
+    position: absolute;
+    inset: -60px -40px;
+    z-index: -1;
+    background: radial-gradient(ellipse at center, rgba(201, 169, 110, 0.16), transparent 65%);
+    animation: ab-respirar 6s ease-in-out 1.6s infinite;
+    pointer-events: none;
+}
+.ab-marca .ab-logo-nombre {
+    animation: ab-enfocar 1.3s cubic-bezier(.2, .7, .2, 1) 0.15s both, ab-brillo-texto 7s ease-in-out 2.2s infinite;
+    background: linear-gradient(100deg, #fbf8f2 42%, #f1dfb5 50%, #fbf8f2 58%) 120% 0 / 260% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.ab-marca .ab-logo-fundada { animation: ab-aparecer 0.8s ease 0.9s both; }
+.ab-marca .ab-logo-fundada::before { transform-origin: right; animation: ab-trazo 0.8s ease 1s both; }
+.ab-marca .ab-logo-fundada::after { transform-origin: left; animation: ab-trazo 0.8s ease 1s both; }
+.ab-filete { animation: ab-trazo 1s cubic-bezier(.2, .7, .2, 1) 1.1s both; }
+.ab-filete span { animation: ab-girar-entrar 0.7s cubic-bezier(.3, 1.6, .5, 1) 1.5s both; }
+.ab-marca h2 { animation: ab-subir 0.8s ease 1.35s both; }
+.ab-marca .au-intro { animation: ab-subir 0.8s ease 1.5s both; }
+.ab-marca .au-features { animation: ab-aparecer 0.6s ease 1.6s both; }
+.ab-marca .au-features li { animation: ab-subir 0.7s ease both; }
+.ab-marca .au-features li:nth-child(1) { animation-delay: 1.7s; }
+.ab-marca .au-features li:nth-child(2) { animation-delay: 1.85s; }
+.ab-marca .au-features li:nth-child(3) { animation-delay: 2s; }
+.ab-plataforma { animation: ab-aparecer 1s ease 2.3s both; }
+.ab-marco { animation: ab-aparecer 1.6s ease 0.2s both; }
+.ab-marca .au-feat-icon { transition: background 0.3s ease, transform 0.3s ease; }
+.ab-marca .au-features li:hover .au-feat-icon { background: rgba(201, 169, 110, 0.18); transform: rotate(-8deg) scale(1.08); }
+
+/* Polvo dorado que sube lento */
+.ab-polvo { position: absolute !important; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.ab-polvo i {
+    position: absolute;
+    bottom: -10px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--ab-oro-claro);
+    box-shadow: 0 0 6px rgba(230, 211, 168, 0.8);
+    opacity: 0;
+    animation: ab-flotar-polvo linear infinite;
+}
+.ab-polvo i:nth-child(1)  { left: 6%;  animation-duration: 19s; animation-delay: -2s;  --dx: 30px;  --o: .45; }
+.ab-polvo i:nth-child(2)  { left: 14%; animation-duration: 24s; animation-delay: -9s;  --dx: -20px; --o: .3; width: 2px; height: 2px; }
+.ab-polvo i:nth-child(3)  { left: 22%; animation-duration: 17s; animation-delay: -5s;  --dx: 25px;  --o: .55; }
+.ab-polvo i:nth-child(4)  { left: 31%; animation-duration: 27s; animation-delay: -14s; --dx: -35px; --o: .35; width: 2px; height: 2px; }
+.ab-polvo i:nth-child(5)  { left: 39%; animation-duration: 21s; animation-delay: -1s;  --dx: 15px;  --o: .5; }
+.ab-polvo i:nth-child(6)  { left: 47%; animation-duration: 25s; animation-delay: -17s; --dx: -25px; --o: .3; width: 4px; height: 4px; }
+.ab-polvo i:nth-child(7)  { left: 55%; animation-duration: 18s; animation-delay: -7s;  --dx: 30px;  --o: .45; width: 2px; height: 2px; }
+.ab-polvo i:nth-child(8)  { left: 63%; animation-duration: 23s; animation-delay: -12s; --dx: -15px; --o: .55; }
+.ab-polvo i:nth-child(9)  { left: 70%; animation-duration: 20s; animation-delay: -4s;  --dx: 20px;  --o: .35; }
+.ab-polvo i:nth-child(10) { left: 77%; animation-duration: 26s; animation-delay: -19s; --dx: -30px; --o: .5; width: 2px; height: 2px; }
+.ab-polvo i:nth-child(11) { left: 84%; animation-duration: 16s; animation-delay: -10s; --dx: 18px;  --o: .4; }
+.ab-polvo i:nth-child(12) { left: 91%; animation-duration: 22s; animation-delay: -6s;  --dx: -22px; --o: .5; width: 4px; height: 4px; }
+.ab-polvo i:nth-child(13) { left: 27%; animation-duration: 29s; animation-delay: -22s; --dx: 40px;  --o: .3; width: 2px; height: 2px; }
+.ab-polvo i:nth-child(14) { left: 59%; animation-duration: 28s; animation-delay: -15s; --dx: -40px; --o: .35; }
+
+/* Tarjeta de acceso */
+.au-card { animation: ab-subir 0.9s cubic-bezier(.2, .7, .2, 1) 0.35s both; }
+.au-card::before {
+    background: linear-gradient(90deg, var(--ab-oro-oscuro), var(--ab-oro-claro), var(--ab-oro-oscuro), var(--ab-oro-claro), var(--ab-oro-oscuro)) 0 0 / 200% 100%;
+    animation: ab-oro-correr 6s linear infinite;
+}
+.au-header > * { animation: ab-subir 0.7s ease both; }
+.au-header > :nth-child(1) { animation-delay: 0.7s; }
+.au-header > :nth-child(2) { animation-delay: 0.8s; }
+.au-header > :nth-child(3) { animation-delay: 0.9s; }
+.au-card form > * { animation: ab-subir 0.7s ease both; }
+.au-card form > :nth-child(1) { animation-delay: 1s; }
+.au-card form > :nth-child(2) { animation-delay: 1.1s; }
+.au-card form > :nth-child(3) { animation-delay: 1.2s; }
+.au-card form > :nth-child(n+4) { animation-delay: 1.3s; }
+.au-copy { animation: ab-aparecer 1s ease 1.5s both; }
+.au-input { transition: border-color 0.2s ease, box-shadow 0.25s ease, background 0.25s ease; }
+
+/* Destello que cruza el botón al pasar el mouse */
+.au-btn-primary { position: relative; overflow: hidden; }
+.au-btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -60%;
+    width: 40%;
+    background: linear-gradient(100deg, transparent, rgba(230, 211, 168, 0.28), transparent);
+    transform: skewX(-18deg);
+    pointer-events: none;
+}
+.au-btn-primary:hover:not(:disabled)::after { animation: ab-barrido 0.9s ease; }
+.au-btn-primary:active:not(:disabled) { transform: translateY(1px); }
+
 @media (prefers-reduced-motion: reduce) {
-    .ab-destello { animation: none; display: none; }
+    .ab-destello, .ab-polvo { animation: none; display: none; }
+    .ab-marca *, .ab-marca *::before, .ab-marca *::after,
+    .ab-marca, .au-card, .au-card::before, .au-card *, .au-copy, .au-btn-primary::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }

@@ -226,3 +226,55 @@
     .hero { padding: 1.25rem; }
     .hero h1 { font-size: 1.6rem; }
 }
+
+/* =================== Animaciones del portal =================== */
+@keyframes ab-dash-subir { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes ab-dash-entrar-lado { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+@keyframes ab-dash-barra { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.topbar { animation: ab-dash-subir 0.5s ease both; }
+.hero { animation: ab-dash-subir 0.6s ease 0.05s both; }
+.hero .badge { animation: ab-dash-subir 0.6s ease 0.15s both; }
+.hero h1 { animation: ab-dash-subir 0.6s ease 0.22s both; }
+.hero > p { animation: ab-dash-subir 0.6s ease 0.3s both; }
+.module-card { animation: ab-dash-subir 0.55s cubic-bezier(.2, .7, .2, 1) both; }
+.module-card .module-bar { transform-origin: left; animation: ab-dash-barra 0.7s ease both; }
+.side-item { animation: ab-dash-entrar-lado 0.4s ease both; }
+.module-card:nth-child(1) { animation-delay: 0.36s; } .module-card:nth-child(1) .module-bar { animation-delay: 0.61s; }
+.module-card:nth-child(2) { animation-delay: 0.41s; } .module-card:nth-child(2) .module-bar { animation-delay: 0.66s; }
+.module-card:nth-child(3) { animation-delay: 0.46s; } .module-card:nth-child(3) .module-bar { animation-delay: 0.71s; }
+.module-card:nth-child(4) { animation-delay: 0.50s; } .module-card:nth-child(4) .module-bar { animation-delay: 0.75s; }
+.module-card:nth-child(5) { animation-delay: 0.54s; } .module-card:nth-child(5) .module-bar { animation-delay: 0.79s; }
+.module-card:nth-child(6) { animation-delay: 0.59s; } .module-card:nth-child(6) .module-bar { animation-delay: 0.84s; }
+.module-card:nth-child(7) { animation-delay: 0.64s; } .module-card:nth-child(7) .module-bar { animation-delay: 0.89s; }
+.module-card:nth-child(8) { animation-delay: 0.68s; } .module-card:nth-child(8) .module-bar { animation-delay: 0.93s; }
+.module-card:nth-child(9) { animation-delay: 0.72s; } .module-card:nth-child(9) .module-bar { animation-delay: 0.97s; }
+.module-card:nth-child(10) { animation-delay: 0.77s; } .module-card:nth-child(10) .module-bar { animation-delay: 1.02s; }
+.module-card:nth-child(11) { animation-delay: 0.81s; } .module-card:nth-child(11) .module-bar { animation-delay: 1.06s; }
+.module-card:nth-child(12) { animation-delay: 0.86s; } .module-card:nth-child(12) .module-bar { animation-delay: 1.11s; }
+.module-card:nth-child(13) { animation-delay: 0.91s; } .module-card:nth-child(13) .module-bar { animation-delay: 1.16s; }
+.module-card:nth-child(14) { animation-delay: 0.95s; } .module-card:nth-child(14) .module-bar { animation-delay: 1.20s; }
+.side-item:nth-child(1) { animation-delay: 0.08s; }
+.side-item:nth-child(2) { animation-delay: 0.11s; }
+.side-item:nth-child(3) { animation-delay: 0.14s; }
+.side-item:nth-child(4) { animation-delay: 0.17s; }
+.side-item:nth-child(5) { animation-delay: 0.20s; }
+.side-item:nth-child(6) { animation-delay: 0.23s; }
+.side-item:nth-child(7) { animation-delay: 0.26s; }
+.side-item:nth-child(8) { animation-delay: 0.29s; }
+.side-item:nth-child(9) { animation-delay: 0.32s; }
+.side-item:nth-child(10) { animation-delay: 0.35s; }
+.side-item:nth-child(11) { animation-delay: 0.38s; }
+.side-item:nth-child(12) { animation-delay: 0.41s; }
+.side-item:nth-child(13) { animation-delay: 0.44s; }
+.side-item:nth-child(14) { animation-delay: 0.47s; }
+.side-item:nth-child(15) { animation-delay: 0.50s; }
+
+.module-icon { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.module-card:hover .module-icon { transform: translateY(-2px) rotate(-4deg); box-shadow: 0 8px 16px rgba(33, 33, 35, 0.25); }
+.module-bar { transition: height 0.2s ease; }
+.module-card:hover .module-bar { height: 5px; }
+
+@media (prefers-reduced-motion: reduce) {
+    .app-shell *, .app-shell { animation: none !important; transition: none !important; }
+}

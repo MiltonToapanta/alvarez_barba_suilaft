@@ -6,6 +6,9 @@ export default function Marca() {
     <aside className="au-marca ab-marca" aria-label="Alvarez Barba S.A.">
       <span className="ab-marco" aria-hidden="true" />
       <span className="ab-destello" aria-hidden="true" />
+      <span className="ab-polvo" aria-hidden="true">
+        {Array.from({ length: 14 }, (_, i) => <i key={i} />)}
+      </span>
 
       <LogoAB tono="claro" forma="vertical" />
 
