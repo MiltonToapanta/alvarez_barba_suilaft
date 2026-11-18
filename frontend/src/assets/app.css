@@ -1,0 +1,35 @@
+/* Ajustes propios de Alvarez Barba sobre login.css (SUIAUTO). */
+
+/* Sello del cliente en el panel de marca */
+.au-cliente {
+  display: block;
+  width: min(220px, 60%);
+  margin: 1.1rem auto 0;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 1;
+}
+
+/* "Volver" es un botón (no un enlace) en la versión React */
+button.au-volver {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Dashboard provisional */
+.ab-inicio { min-height: 100vh; background: var(--au-fondo); }
+.ab-barra {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 0.8rem 1.5rem; background: var(--au-navy-1); color: #e2e8f0;
+}
+.ab-barra-marca { display: flex; align-items: center; gap: 0.6rem; font-family: var(--au-font-titulo); }
+.ab-barra-marca img { width: 32px; height: 32px; }
+.ab-barra-usuario { display: flex; align-items: center; gap: 1rem; }
+.ab-barra-usuario small { color: var(--au-celeste-suave); }
+.ab-barra-usuario .au-btn-outline { color: #e2e8f0; border-color: #334155; background: transparent; }
+.ab-contenido { max-width: 960px; margin: 3rem auto; padding: 0 1rem; }
+.ab-contenido h1 { font-family: var(--au-font-titulo); margin-bottom: 0.5rem; }
+.ab-modulos { margin-top: 1rem; color: var(--au-texto-2); }

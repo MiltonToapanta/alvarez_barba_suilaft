@@ -1,0 +1,877 @@
+/*
+ * Pantallas de acceso (login, doble autenticación, códigos de recuperación).
+ * Mismo diseño que el acceso de SUILAFT v2.0: panel de marca oscuro a la
+ * izquierda y tarjeta clara con borde celeste a la derecha. Prefijo au-.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Lexend:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+:root {
+    --au-font-marca: 'Michroma', 'Lexend', sans-serif;
+    --au-font-titulo: 'Lexend', system-ui, sans-serif;
+    --au-font-texto: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    --au-navy-1: #08111f;
+    --au-navy-2: #0d1f36;
+    --au-navy-3: #143456;
+    --au-celeste: #38bdf8;
+    --au-celeste-suave: #93c5fd;
+    --au-fondo: #e8edf4;
+    --au-tarjeta: #ffffff;
+    --au-texto: #0f172a;
+    --au-texto-2: #64748b;
+    --au-borde: #cbd5e1;
+    --au-input: #e8f0fe;
+    --au-boton: #111827;
+    --au-boton-hover: #1f2a3c;
+    --au-enlace: #0369a1;
+    --au-foco: #0ea5e9;
+    --au-error: #b91c1c;
+    --au-error-bg: #fef2f2;
+    --au-error-borde: #fecaca;
+    --au-info: #075985;
+    --au-info-bg: #f0f9ff;
+    --au-info-borde: #bae6fd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--au-font-texto);
+    color: var(--au-texto);
+    background: var(--au-fondo);
+    min-height: 100vh;
+}
+
+.au-layout {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    min-height: 100vh;
+}
+
+/* ---------- Panel de marca (izquierda) ---------- */
+.au-marca {
+    position: relative;
+    overflow: hidden;
+    color: #e2e8f0;
+    background:
+        radial-gradient(ellipse at 50% 38%, rgba(56, 189, 248, 0.10), transparent 55%),
+        linear-gradient(160deg, var(--au-navy-1) 0%, var(--au-navy-2) 50%, var(--au-navy-3) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 3.5rem;
+}
+
+/* Cuadrícula tenue de fondo, deslizándose muy lento */
+.au-marca::before {
+    content: '';
+    position: absolute;
+    inset: -44px;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+    animation: au-grid-pan 46s linear infinite;
+}
+
+.au-marca > * {
+    position: relative;
+}
+
+/* Orbes de luz flotando en el fondo */
+.au-orbes {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.au-orbe {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(54px);
+    opacity: 0.55;
+    animation: au-flotar ease-in-out infinite;
+}
+
+.au-orbe-1 {
+    width: 320px;
+    height: 320px;
+    left: -90px;
+    top: -70px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.55), transparent 70%);
+    animation-duration: 17s;
+}
+
+.au-orbe-2 {
+    width: 260px;
+    height: 260px;
+    right: -70px;
+    top: 32%;
+    background: radial-gradient(circle, rgba(129, 140, 248, 0.42), transparent 70%);
+    animation-duration: 21s;
+    animation-delay: -5s;
+}
+
+.au-orbe-3 {
+    width: 230px;
+    height: 230px;
+    left: 20%;
+    bottom: -90px;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.32), transparent 70%);
+    animation-duration: 19s;
+    animation-delay: -9s;
+}
+
+@keyframes au-flotar {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(28px, -20px) scale(1.08); }
+    66% { transform: translate(-20px, 22px) scale(0.95); }
+}
+
+@keyframes au-grid-pan {
+    from { background-position: 0 0, 0 0; }
+    to { background-position: 88px 88px, 88px 88px; }
+}
+
+.au-escudo-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 196px;
+    height: 196px;
+}
+
+.au-escudo-halo {
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.38), transparent 70%);
+    animation: au-pulso 3.6s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes au-pulso {
+    0%, 100% { transform: scale(1); opacity: 0.55; }
+    50% { transform: scale(1.2); opacity: 0.9; }
+}
+
+.au-escudo-plate {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 28%, #ffffff, #e9eef6 72%);
+    box-shadow:
+        0 20px 40px rgba(2, 10, 24, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.au-escudo {
+    position: relative;
+    width: 134px;
+    height: auto;
+    filter: drop-shadow(0 6px 14px rgba(2, 10, 24, 0.3));
+}
+
+/* Un auto recorriendo una via, al pie del panel */
+.au-via {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 30px;
+    margin: 1.5rem auto 0;
+    overflow: hidden;
+}
+
+.au-via-linea {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    transform: translateY(-50%);
+    background: repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.4) 0 14px, transparent 14px 26px);
+}
+
+.au-via-auto {
+    position: absolute;
+    top: 1px;
+    left: -15%;
+    width: 48px;
+    color: var(--au-celeste);
+    filter: drop-shadow(0 0 9px rgba(56, 189, 248, 0.6));
+    animation: au-conducir 7s linear infinite;
+}
+
+.au-via-auto svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@keyframes au-conducir {
+    from { left: -15%; }
+    to { left: 112%; }
+}
+
+.au-nombre {
+    font-family: var(--au-font-marca);
+    font-size: 2.6rem;
+    letter-spacing: 0.06em;
+    color: #fff;
+    margin-top: 1.1rem;
+    line-height: 1.1;
+}
+
+.au-lema {
+    font-family: var(--au-font-titulo);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    margin-top: 0.6rem;
+    text-align: center;
+}
+
+.au-brillo {
+    width: 60%;
+    height: 2px;
+    margin: 2rem 0 2.25rem;
+    background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.55), transparent 70%);
+    box-shadow: 0 0 22px rgba(56, 189, 248, 0.35);
+}
+
+.au-marca h2 {
+    font-family: var(--au-font-titulo);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -0.01em;
+}
+
+.au-marca h2 span {
+    color: var(--au-celeste-suave);
+}
+
+.au-subrayado {
+    width: 36px;
+    height: 3px;
+    border-radius: 2px;
+    margin: 0.9rem auto 1rem;
+    background: linear-gradient(90deg, #f59e0b, var(--au-celeste));
+}
+
+.au-intro {
+    max-width: 520px;
+    text-align: center;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #94a3b8;
+}
+
+.au-features {
+    list-style: none;
+    width: 100%;
+    max-width: 540px;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.au-features li {
+    display: flex;
+    gap: 0.9rem;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.au-feat-icon {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: rgba(56, 189, 248, 0.08);
+    color: var(--au-celeste);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.au-feat-icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+.au-features strong {
+    display: block;
+    font-family: var(--au-font-titulo);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+.au-features p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #94a3b8;
+}
+
+/* ---------- Zona de acceso (derecha) ---------- */
+.au-acceso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    background: radial-gradient(ellipse at 50% 45%, #f8fafc 0%, var(--au-fondo) 70%);
+}
+
+.au-card {
+    width: 100%;
+    max-width: 430px;
+    background: var(--au-tarjeta);
+    border: 2px solid var(--au-celeste);
+    border-radius: 16px;
+    box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.55),
+        0 0 28px rgba(56, 189, 248, 0.35),
+        0 24px 48px rgba(15, 23, 42, 0.12);
+    padding: 2.4rem 2.6rem 2.6rem;
+}
+
+.au-header {
+    text-align: center;
+    margin-bottom: 1.6rem;
+}
+
+.au-eyebrow {
+    display: block;
+    font-family: var(--au-font-titulo);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--au-enlace);
+    margin-bottom: 0.5rem;
+}
+
+.au-header h1 {
+    font-family: var(--au-font-titulo);
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--au-texto);
+}
+
+.au-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--au-texto-2);
+    margin-top: 0.45rem;
+}
+
+.au-copy {
+    margin-top: 1.25rem;
+    font-size: 0.78rem;
+    color: #94a3b8;
+}
+
+/* Campos */
+.au-field {
+    margin-bottom: 1.2rem;
+}
+
+.au-field label {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.45rem;
+}
+
+.au-input-wrap {
+    position: relative;
+}
+
+.au-input-icon {
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 17px;
+    height: 17px;
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+.au-input {
+    width: 100%;
+    font-family: var(--au-font-texto);
+    font-size: 0.95rem;
+    color: var(--au-texto);
+    background: var(--au-input);
+    border: 1px solid var(--au-borde);
+    border-radius: 8px;
+    padding: 0.78rem 0.9rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.au-input-wrap .au-input {
+    padding-left: 2.6rem;
+    padding-right: 2.8rem;
+}
+
+.au-input:focus {
+    outline: none;
+    border-color: var(--au-foco);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.25);
+}
+
+.au-input--code {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 1.35rem;
+    letter-spacing: 0.3em;
+    text-align: center;
+}
+
+.au-btn-icon {
+    position: absolute;
+    top: 50%;
+    right: 0.4rem;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.au-btn-icon:hover {
+    background: rgba(148, 163, 184, 0.18);
+}
+
+.au-hint {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--au-texto-2);
+    margin-top: 0.35rem;
+}
+
+/* Botones */
+.au-btn-primary {
+    display: block;
+    width: 100%;
+    margin-top: 1.6rem;
+    text-align: center;
+    text-decoration: none;
+    font-family: var(--au-font-titulo);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--au-boton);
+    border: none;
+    border-radius: 9px;
+    padding: 0.9rem 1rem;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.au-btn-primary:hover {
+    background: var(--au-boton-hover);
+    transform: translateY(-1px);
+}
+
+.au-btn-outline {
+    flex: 1;
+    font-family: var(--au-font-titulo);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--au-texto);
+    background: #fff;
+    border: 1px solid var(--au-borde);
+    border-radius: 8px;
+    padding: 0.62rem 0.9rem;
+    cursor: pointer;
+}
+
+.au-btn-outline:hover {
+    background: #f8fafc;
+}
+
+.au-btn-primary:focus-visible,
+.au-btn-outline:focus-visible,
+.au-btn-icon:focus-visible,
+.au-link:focus-visible,
+.au-details summary:focus-visible {
+    outline: 2px solid var(--au-foco);
+    outline-offset: 2px;
+}
+
+.au-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Avisos */
+.au-alert {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid;
+}
+
+.au-alert--error {
+    color: var(--au-error);
+    background: var(--au-error-bg);
+    border-color: var(--au-error-borde);
+}
+
+.au-alert--info {
+    color: var(--au-info);
+    background: var(--au-info-bg);
+    border-color: var(--au-info-borde);
+}
+
+/* Registro del Authenticator */
+.au-steps {
+    list-style: none;
+    counter-reset: paso;
+    margin-bottom: 1.1rem;
+}
+
+.au-steps li {
+    counter-increment: paso;
+    position: relative;
+    padding-left: 2rem;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    margin-bottom: 0.5rem;
+}
+
+.au-steps li::before {
+    content: counter(paso);
+    position: absolute;
+    left: 0;
+    top: 0.05rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: var(--au-info-bg);
+    border: 1px solid var(--au-info-borde);
+    color: var(--au-enlace);
+    font-family: var(--au-font-titulo);
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.au-qr {
+    width: 184px;
+    height: 184px;
+    margin: 0 auto 1rem;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid var(--au-borde);
+    border-radius: 12px;
+}
+
+.au-qr svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.au-details {
+    font-size: 0.88rem;
+    color: var(--au-texto-2);
+    margin: 0.4rem 0 1rem;
+}
+
+.au-details summary {
+    cursor: pointer;
+    color: var(--au-enlace);
+    font-weight: 600;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    border-radius: 4px;
+}
+
+.au-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.au-chevron {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.15s ease;
+}
+
+.au-details[open] .au-chevron {
+    transform: rotate(180deg);
+}
+
+.au-details-body {
+    margin-top: 0.6rem;
+    line-height: 1.5;
+}
+
+.au-secret {
+    display: block;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    color: var(--au-texto);
+    background: #f1f5f9;
+    border: 1px solid var(--au-borde);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 0.35rem;
+    word-break: break-all;
+}
+
+/* Códigos de recuperación */
+.au-codes {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.au-codes li {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.98rem;
+    text-align: center;
+    background: #f1f5f9;
+    border: 1px solid var(--au-borde);
+    border-radius: 8px;
+    padding: 0.55rem;
+}
+
+.au-footer {
+    text-align: center;
+    margin-top: 1.1rem;
+    font-size: 0.85rem;
+}
+
+.au-link {
+    color: var(--au-enlace);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.au-link:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+    .au-marca { padding: 2.5rem 2rem; }
+    .au-nombre { font-size: 2.1rem; }
+}
+
+@media (max-width: 900px) {
+    .au-layout { grid-template-columns: minmax(0, 1fr); }
+    .au-lema { font-size: 0.62rem; letter-spacing: 0.1em; }
+    .au-otp { gap: 0.4rem; }
+    .au-marca { padding: 2rem 1.5rem 1.75rem; }
+    .au-escudo-wrap { width: 110px; height: 110px; }
+    .au-escudo { width: 75px; }
+    .au-nombre { font-size: 1.7rem; margin-top: 0.75rem; }
+    .au-brillo, .au-marca h2, .au-subrayado, .au-intro, .au-features, .au-via { display: none; }
+    .au-acceso { padding: 2rem 1rem; }
+    .au-card { padding: 2rem 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .au-marca::before,
+    .au-orbe,
+    .au-escudo-halo,
+    .au-via-auto {
+        animation: none;
+    }
+    .au-via-auto { left: 42%; }
+}
+
+@media print {
+    body { background: #fff; }
+    .au-layout { display: block; }
+    .au-marca, .au-actions, .au-btn-primary, .au-footer, .au-copy { display: none; }
+    .au-acceso { background: #fff; }
+    .au-card { border: none; box-shadow: none; }
+}
+
+/* ---------- Código de 6 dígitos ---------- */
+.au-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #475569;
+    text-decoration: none;
+    margin-bottom: 0.6rem;
+    border-radius: 4px;
+}
+
+.au-volver svg {
+    width: 15px;
+    height: 15px;
+}
+
+.au-volver:hover {
+    color: var(--au-texto);
+}
+
+.au-volver:focus-visible {
+    outline: 2px solid var(--au-foco);
+    outline-offset: 2px;
+}
+
+.au-otp {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.6rem;
+}
+
+.au-otp-box {
+    width: 100%;
+    aspect-ratio: 1 / 1.05;
+    min-width: 0;
+    text-align: center;
+    font-family: var(--au-font-titulo);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--au-texto);
+    background: #f8fafc;
+    border: 1px solid var(--au-borde);
+    border-radius: 8px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.au-otp-box:focus {
+    outline: none;
+    background: #fff;
+    border-color: var(--au-foco);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.25);
+}
+
+.au-btn-primary:disabled {
+    background: #e2e8f0;
+    color: #94a3b8;
+    border: 1px solid #cbd5e1;
+    box-shadow: none;
+    transform: none;
+    cursor: not-allowed;
+}
+
+.au-separador {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 1.4rem 0 1rem;
+}
+
+.au-recuperacion .au-input {
+    margin-top: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.au-btn-outline--full {
+    width: 100%;
+    margin-top: 0.6rem;
+}
+
+/* ---------- Activación de cuenta ---------- */
+.au-input--readonly {
+    background: #f1f5f9;
+    color: #475569;
+    cursor: default;
+}
+
+.au-reglas {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.9rem;
+    margin-top: 0.55rem;
+}
+
+.au-reglas li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.au-reglas li::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid #cbd5e1;
+    background: #fff;
+    flex: none;
+}
+
+.au-reglas li.ok {
+    color: #15803d;
+}
+
+.au-reglas li.ok::before {
+    border-color: #16a34a;
+    background: #16a34a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E") center / 9px no-repeat;
+}
+
+.au-hint--ok { color: #15803d; }
+.au-hint--error { color: var(--au-error); }
+
+.au-estado-icono {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.au-estado-icono svg {
+    width: 28px;
+    height: 28px;
+}
+
+.au-estado-icono--ok {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.au-estado-icono--alerta {
+    background: #fef3c7;
+    color: #b45309;
+}
