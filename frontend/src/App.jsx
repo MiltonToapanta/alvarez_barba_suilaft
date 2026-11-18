@@ -6,6 +6,9 @@ import Configurar from './pages/Configurar.jsx';
 import Codigo from './pages/Codigo.jsx';
 import Recuperacion from './pages/Recuperacion.jsx';
 import Inicio from './pages/Inicio.jsx';
+import EnConstruccion from './pages/EnConstruccion.jsx';
+import AppLayout from './components/AppLayout.jsx';
+import { modulosVisibles } from './modulos.js';
 
 /**
  * estado: 'cargando' | 'anonimo' | 'configurar' | 'codigo' | 'autenticado'
@@ -55,7 +58,12 @@ export default function App() {
           path="/login/recuperacion"
           element={estado === 'autenticado' && codigosRecuperacion ? <Recuperacion /> : <Navigate to={RUTA_POR_ESTADO[estado]} replace />}
         />
-        <Route path="/" element={solo('autenticado', <Inicio />)} />
+        <Route path="/" element={solo('autenticado', <AppLayout />)}>
+          <Route index element={<Inicio />} />
+          {modulosVisibles(usuario).map((m) => (
+            <Route key={m.ruta} path={m.ruta} element={<EnConstruccion modulo={m} />} />
+          ))}
+        </Route>
         <Route path="*" element={<Navigate to={RUTA_POR_ESTADO[estado]} replace />} />
       </Routes>
     </AuthContext.Provider>

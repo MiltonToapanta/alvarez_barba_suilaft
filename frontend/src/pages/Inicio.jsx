@@ -1,33 +1,33 @@
-import { api } from '../api.js';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../App.jsx';
-import escudo from '../assets/escudo-color.png';
+import { modulosVisibles } from '../modulos.js';
+import Icono from '../components/Icono.jsx';
 
-/** Placeholder del dashboard: aquí irán los módulos (KYC, matrices, alertas, RESU...). */
+/** Panel de inicio (SUIAUTO app/views/home/dashboard.php). */
 export default function Inicio() {
-  const { usuario, refrescar } = useAuth();
-
-  const salir = async () => {
-    await api.post('/auth/logout').catch(() => {});
-    refrescar();
-  };
+  const { usuario } = useAuth();
+  const modulos = modulosVisibles(usuario);
 
   return (
-    <div className="ab-inicio">
-      <header className="ab-barra">
-        <div className="ab-barra-marca">
-          <img src={escudo} alt="" />
-          <span>SUIAUTO · Alvarez Barba S.A.</span>
+    <section className="hero">
+      <span className="badge"><Icono nombre="bank" /> PANEL CORPORATIVO SUIAUTO</span>
+      <h1>Hola, <span className="accent">{usuario?.nombres || usuario?.usuario}</span></h1>
+      <p>Elige una opción para continuar con la gestión de cumplimiento vehicular</p>
+
+      {modulos.length === 0 ? (
+        <p className="vacio">Tu rol todavía no tiene módulos asignados. Pide acceso al administrador.</p>
+      ) : (
+        <div className="modules-grid">
+          {modulos.map((m) => (
+            <Link key={m.ruta} to={'/' + m.ruta} className="module-card">
+              <span className="module-icon"><Icono nombre={m.icon} /></span>
+              <strong>{m.titulo}</strong>
+              <p>{m.desc}</p>
+              <span className="module-bar" />
+            </Link>
+          ))}
         </div>
-        <div className="ab-barra-usuario">
-          <span>{usuario?.nombres} <small>({usuario?.rol})</small></span>
-          <button type="button" className="au-btn-outline" onClick={salir}>Cerrar sesión</button>
-        </div>
-      </header>
-      <main className="ab-contenido">
-        <h1>Bienvenido/a, {usuario?.nombres}</h1>
-        <p>Sesión iniciada con doble autenticación. Los módulos del sistema se irán habilitando aquí.</p>
-        <p className="ab-modulos">Módulos de tu rol: {usuario?.modulos?.join(', ') || '—'}</p>
-      </main>
-    </div>
+      )}
+    </section>
   );
 }

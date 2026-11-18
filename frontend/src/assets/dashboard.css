@@ -1,0 +1,220 @@
+/* Portal (dashboard) — replicado de SUIAUTO public/css/dashboard.css.
+   Acotado a .app-shell para no chocar con los estilos del login. */
+.app-shell {
+    --navy: #0f2544;
+    --navy-dark: #0a1a33;
+    --blue: #2563eb;
+    --blue-light: #60a5fa;
+    --bg: #eef1f6;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+
+    display: flex;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.app-shell *,
+.app-shell *::before,
+.app-shell *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.app-shell svg { width: 20px; height: 20px; display: block; }
+
+/* Sidebar */
+.sidebar {
+    width: 68px;
+    background: var(--navy-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.25rem 0;
+    flex-shrink: 0;
+}
+
+.side-item {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: #9db1d1;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+.side-item:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.side-item.active { background: var(--blue); color: #fff; }
+
+.sidebar-velo { display: none; }
+
+/* Main */
+.app-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+.topbar {
+    background: #fff;
+    border-bottom: 1px solid #e5e9f0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.5rem;
+    flex-wrap: wrap;
+}
+
+.icon-btn { display: none; background: none; border: none; cursor: pointer; color: var(--navy); }
+
+.brand { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+.brand img { width: 36px; height: 36px; object-fit: contain; }
+.brand strong { display: block; font-size: 1rem; color: var(--navy); letter-spacing: 0.02em; }
+.brand span { font-size: 0.75rem; color: var(--muted); }
+.brand .brand-cliente { height: 30px; width: auto; margin-left: 0.5rem; padding-left: 0.75rem; border-left: 1px solid #e5e9f0; }
+
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+
+.pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #f2f4f8;
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+    color: var(--navy);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+.pill svg { width: 15px; height: 15px; }
+.pill.role { background: #eaf1ff; color: var(--blue); font-weight: 600; }
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.15s ease;
+}
+.btn-logout svg { width: 15px; height: 15px; }
+.btn-logout:hover { background: #1d4ed8; }
+
+/* Content */
+.content { padding: 1.75rem; }
+
+.hero {
+    background: linear-gradient(180deg, #f7f9fc, #eef1f6);
+    border: 1px solid #e5e9f0;
+    border-radius: 24px;
+    padding: 2rem;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    border: 1px solid #dbe4f3;
+    color: var(--navy);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+}
+.badge svg { width: 16px; height: 16px; }
+
+.hero h1 { font-size: 2.1rem; margin: 1rem 0 0.35rem; color: var(--navy); }
+.hero h1 .accent { color: var(--blue); }
+.hero > p { color: var(--muted); margin-bottom: 1.75rem; }
+
+.modules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+
+.module-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid #e5e9f0;
+    border-radius: 18px;
+    padding: 1.5rem 1.4rem 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.module-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(15, 37, 68, 0.1); }
+
+.module-icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(160deg, var(--navy), var(--navy-dark));
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+}
+.module-card strong { font-size: 1.02rem; color: var(--navy); }
+.module-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+
+.module-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--blue-light));
+}
+
+.vacio { color: var(--muted); }
+.hero .btn-volver {
+    display: inline-flex;
+    margin-top: 1.25rem;
+    background: var(--navy);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.55rem 1.1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.app-shell :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+@media (max-width: 1100px) {
+    .modules-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 860px) {
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+    .sidebar {
+        position: fixed;
+        left: -80px;
+        top: 0;
+        bottom: 0;
+        z-index: 20;
+        overflow-y: auto;
+        transition: left 0.2s ease;
+    }
+    .sidebar.open { left: 0; }
+    .sidebar.open + .sidebar-velo { display: block; position: fixed; inset: 0; z-index: 19; background: rgba(10, 26, 51, 0.35); }
+    .icon-btn { display: flex; }
+    .brand .brand-cliente { display: none; }
+}
+
+@media (max-width: 520px) {
+    .modules-grid { grid-template-columns: 1fr; }
+    .content { padding: 1rem; }
+    .hero { padding: 1.25rem; }
+    .hero h1 { font-size: 1.6rem; }
+}
